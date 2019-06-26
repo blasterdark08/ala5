@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kamer{% endblock %}
+
+{% block body %}
+    <h1>Bevestig Reservering</h1>
+<h2>{{ van }} - {{ tot }} totaal {{ dagen }} dag(en)</h2>
+{#    {% if app.user %}#}
+        Reserveer direct
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Kamernummer</th>
+                <th>Prijs</th>
+                <th>ex btw</th>
+                <th>Totaal prijs</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{ kamer.id }} </td>
+                <td>{{ kamer.prijs }}</td>
+                <td>{{ kamer.prijs * dagen }}</td>
+                <td>{{ kamer.prijs * dagen * 1.21 }}</td>
+                <td><a href="{{ path('reservering_betaal',{'id': kamer.id, 'van': van , 'tot': tot}) }}">Reserveer</a></td>
+            </tr>
+            </tbody>
+        </table>
+{#    {% else %}#}
+        <h2>Registreer eerst of login</h2>
+        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Registreer</a><br>
+        <a class="nav-link" href="{{ path('fos_user_security_login') }}">login</a>
+{#    {% endif %}#}
+
+
+
+
+
+{% endblock %}

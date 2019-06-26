@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kamer index{% endblock %}
+
+{% block body %}
+    <h1>Kamer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prijs</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for kamer in kamers %}
+            <tr>
+                <td>{{ kamer.id }}</td>
+                <td>{{ kamer.prijs }}</td>
+                <td>
+                    <a href="{{ path('kamer_show', {'id': kamer.id}) }}">show</a>
+                    <a href="{{ path('kamer_edit', {'id': kamer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('kamer_new') }}">Create new</a><br>
+    <a href="{{ path('type_index') }}">New Type</a>
+{% endblock %}

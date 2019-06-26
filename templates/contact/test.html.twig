@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+
+    <div>
+        {% if verstuurd  is empty %}
+            {{ form_start(our_form) }}
+            {{ form_widget(our_form) }}
+            <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Send" />
+            {{ form_end(our_form) }}
+        {% else  %}
+            {{ verstuurd}}
+        {% endif %}
+    </div>
+
+{% endblock %}

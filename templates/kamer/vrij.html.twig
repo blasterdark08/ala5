@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kamer index{% endblock %}
+
+{% block body %}
+    <h1>Alle kamers die vrij zijn!</h1>
+<h3> Vanaf {{ van }} tot {{ tot }} voor {{ pers }}  personen  </h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Prijs Per nacht</th>
+            <th>Personen</th>
+            <th>img</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for kamer in kamers %}
+            <tr>
+                <td>{{ kamer.id }}</td>
+                <td>{{ kamer.prijs }}</td>
+                <td>{{ kamer.aantal_personen}}</td>
+                <td>{{ kamer.foto}}
+                    <img src='img/{{ kamer.foto }}' class="admin-preview"/ width="40px" height="40px">
+                </td>
+                <td>
+                    <a href="{{ path('kamer_Reser', {'id': kamer.id, 'van': van , 'tot': tot}) }}">Reserveer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('vrij_index') }}">Opnieuw</a>
+{% endblock %}

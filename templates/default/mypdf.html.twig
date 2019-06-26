@@ -1,0 +1,65 @@
+{# ./templates/default/mypdf.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reservering {{ reservering.id }} </title>
+</head>
+<body>
+<h4>Reserverings nummer: {{ reservering.id }}</h4>
+<table>
+    <tr>
+    <th>Klantgegevens</th>
+    </tr>
+    <tr>
+        <td>Voornaam: </td>
+        <td>{{ user.voornaam }}</td>
+
+        {#Telefoonnr	Banknr	Woonplaats	Adres		Achternaam	actions#}
+    </tr>
+    <tr>
+        <td>Achternaam: </td>
+        <td>{{ user.achternaam }}</td>
+    </tr>
+    <tr>
+        <td>Woonplaats: </td>
+        <td>{{ user.woonplaats }}</td>
+    </tr>
+    <tr>
+        <td>Adres: </td>
+        <td>{{ user.adres }}</td>
+    </tr>
+    <tr>
+        <td>Telefoonnr: </td>
+        <td>{{ user.telefoonnr }}</td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+<h4>Van {{ van }} tot {{ tot }}</h4>
+<table class="table" >
+    <tbody >
+    <tr>
+        <th> Kamernummer </th>
+        <th> Prijs per dag </th>
+        <th> Aantal dagen </th>
+        <th> ex btw </th>
+        <th> Totaal prijs </th>
+
+    </tr>
+    <tr>
+        <td>{{ kamer.id }} </td>
+        <td>{{ kamer.prijs }}</td>
+        <td>{{ dagen }}</td>
+        <td>{{ kamer.prijs * dagen }}</td>
+        <td>{{ kamer.prijs * dagen * 1.21 }}</td>
+        {##}
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
